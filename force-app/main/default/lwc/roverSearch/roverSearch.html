@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Rover Search" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Enter Camera Name" value={roverName} onchange={handleRoverNameChange}></lightning-input>
+            <lightning-input label="Enter Earth Date" value={earthDate} onchange={handleEarthDateChange}></lightning-input>
+            <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+        </div>
+
+    </lightning-card>
+</template>

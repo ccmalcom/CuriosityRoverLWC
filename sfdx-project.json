@@ -1,0 +1,13 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "NasaRoverProject",
+  "namespace": "",
+  "sfdcLoginUrl": "https://gmailcomtestlwcorg-dev-ed.develop.my.salesforce.com",
+  "sourceApiVersion": "60.0"
+
+}

@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <template for:each={photos} for:item="photo">
+            <div key={photo.id}>
+                <!-- Display each photo -->
+                <img src={photo.imageUrl} alt="Mars Rover Photo"/>
+            </div>
+        </template>
+    </div>
+</template>
