@@ -1,10 +1,40 @@
 <template>
-    <lightning-card title="Rover Search" icon-name="custom:custom14">
-        <div class="slds-m-around_medium">
-            <lightning-input label="Enter Camera Name" value={roverName} onchange={handleRoverNameChange}></lightning-input>
-            <lightning-input label="Enter Earth Date" value={earthDate} onchange={handleEarthDateChange}></lightning-input>
-            <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+    <lightning-card title="NASA Curiosity Rover Photos" icon-name="custom:custom14">
+        <div class="slds-p-around_medium">
+            <h1>Welcome!</h1>
+            <p>Use this site to see photos from the Mars Curiosity Rover by date as well as by camera. The Curiosity Rover landed on August 6, 2012, so photos before that date will not be available.</p>
         </div>
-
+        
+        <div class="slds-p-around_medium" id="searchSection">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12">
+                    <form id="constraints" onsubmit={handleSubmit}>
+                        <lightning-input 
+                            type="date" 
+                            label="Date of photos" 
+                            name="inputDate"
+                            min="2012-08-06"
+                            max="2024-04-04" 
+                            onchange={handleDateChange}
+                            required>
+                        </lightning-input>
+                        <lightning-combobox
+                            name="cameraSelect"
+                            label="Which Camera?"
+                            value={selectedCamera}
+                            placeholder="- Select -"
+                            options={cameraOptions}
+                            onchange={handleCameraChange}>
+                        </lightning-combobox>
+                        <lightning-button
+                            variant="brand"
+                            type="submit"
+                            name="search"
+                            label="Search">
+                        </lightning-button>
+                    </form>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
     </lightning-card>
 </template>

@@ -3,7 +3,8 @@
         <template for:each={photos} for:item="photo">
             <div key={photo.id}>
                 <!-- Display each photo -->
-                <img src={photo.imageUrl} alt="Mars Rover Photo"/>
+                <h2>{photo.camera.full_name}</h2>
+                <img src={photo.img_src} alt="Mars Rover Photo"/>
             </div>
         </template>
     </div>
