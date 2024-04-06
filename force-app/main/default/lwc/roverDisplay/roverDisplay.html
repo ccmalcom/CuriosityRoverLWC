@@ -1,11 +1,28 @@
 <template>
-    <div>
-        <template for:each={photos} for:item="photo">
-            <div key={photo.id}>
-                <!-- Display each photo -->
-                <h2>{photo.camera.full_name}</h2>
-                <img src={photo.img_src} alt="Mars Rover Photo"/>
-            </div>
-        </template>
-    </div>
+    <template if:true={hasPhotos}>
+        <div class="slds-p-around_medium" id="info">
+            <p>Total Images: {totalImages}</p>
+            <p>Click Photo to see Full Size</p>
+        </div>
+
+        <nav class="slds-m-around_medium pageNav">
+            <lightning-button label="Previous 25" variant="neutral" class="prev"
+                onclick={handlePrev}></lightning-button>
+            <p>Page {currentPage} of {totalPages}</p>
+            <lightning-button label="Next 25" variant="neutral" class="next" onclick={handleNext}></lightning-button>
+        </nav>
+
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={photos} for:item="photo">
+                <div key={photo.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5">
+                    <img src={photo.img_src} alt="Mars Rover Photo" onclick={handleImageClick} />
+                </div>
+            </template>
+        </div>
+    </template>
+    <template if:false={photos}>
+        <div class="slds-p-around_medium">
+            <p>No photos found for this date and camera.</p>
+        </div>
+    </template>
 </template>
