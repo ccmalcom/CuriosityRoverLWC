@@ -2,12 +2,19 @@ import { LightningElement, api } from 'lwc';
 
 export default class RoverDisplay extends LightningElement {
     @api photos;
-    totalImages = 0; 
-    currentPage = 1; 
-    totalPages = 1; 
+    @api images;
+    @api pages;
+
+    currentPage = 1;
 
     get hasPhotos() {
         return this.photos && this.photos.length > 0;
+    }
+
+    get selectedImages() {
+        const start = (this.currentPage - 1) * 25;
+        const end = this.currentPage * 25;
+        return this.photos.slice(start, end);
     }
 
     handlePrev() {
@@ -17,7 +24,7 @@ export default class RoverDisplay extends LightningElement {
     }
 
     handleNext() {
-        if (this.currentPage < this.totalPages) {
+        if (this.currentPage < this.pages) {
             this.currentPage += 1;
         }
     }
