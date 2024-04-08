@@ -1,9 +1,11 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 
 export default class RoverDisplay extends LightningElement {
     @api photos;
     @api images;
     @api pages;
+    @track isModalOpen = false;
+    @track selectedImageUrl;
 
     currentPage = 1;
 
@@ -30,11 +32,11 @@ export default class RoverDisplay extends LightningElement {
     }
 
     handleImageClick(event) {
-        const imgIndex = event.target.dataset.index;
-        const selectedEvent = new CustomEvent('selected', {
-            detail: this.photos[imgIndex]
-        });
-        this.dispatchEvent(selectedEvent);
+        this.selectedImageUrl = event.target.src;  // Assuming the image src is the URL
+        this.isModalOpen = true;
+    }
+    closeModal() {
+        this.isModalOpen = false;
     }
 
 }
