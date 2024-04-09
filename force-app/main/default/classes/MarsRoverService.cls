@@ -1,19 +1,36 @@
 public with sharing class MarsRoverService {
-    private static final String API_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos';
-    private static final String API_KEY = 'WKjR8Q56dyBeJsYXNbAVqkD9zdw3kXLcUUAat4Cn'; // Consider moving this to a secure location
 
+    private static String apiKey;
+    private static String apiUrl;
+
+    private static void loadConfig() {
+        API_Config__mdt config = [SELECT API_Key__c, API_Endpoint__c FROM API_Config__mdt WHERE DeveloperName = 'NASA_Config' LIMIT 1];
+        apiKey = config.API_Key__c;
+        apiUrl = config.API_Endpoint__c;
+    }
+    private static String getApiKey() {
+        if (String.isEmpty(apiKey)) {
+            loadConfig();
+        }
+        return apiKey;
+    }
+
+    private static String getApiUrl() {
+        if (String.isEmpty(apiUrl)) {
+            loadConfig();
+        }
+        return apiUrl;
+    }
     @AuraEnabled(cacheable=true)
     public static List<Map<String, Object>> getRoverPhotos(String camera, String earthDate) {
-        if (earthDate == null || camera == null) {
-            earthDate = '2015-6-3'; // Default date
-            camera = 'FHAZ'; // Default camera
-        }
+        String key = getApiKey();
+        String url = getApiUrl();
         
         String requestUrl;
         if (camera == 'All') {
-            requestUrl = API_URL + '?earth_date=' + earthDate + '&api_key=' + API_KEY;
+            requestUrl = url + '?earth_date=' + earthDate + '&api_key=' + key;
         } else {
-            requestUrl = API_URL + '?earth_date=' + earthDate + '&camera=' + camera + '&api_key=' + API_KEY;
+            requestUrl = url + '?earth_date=' + earthDate + '&camera=' + camera + '&api_key=' + key;
             
         }
             
