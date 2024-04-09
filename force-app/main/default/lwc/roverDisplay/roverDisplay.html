@@ -1,44 +1,39 @@
 <template>
-    <template if:true={hasPhotos}>
+    
 
+    <template lwc:if={hasPhotos}>
         <nav class="slds-m-around_medium slds-grid slds-grid_align-spread slds-wrap">
             <div class="slds-col slds-size_1-of-3">
-                <lightning-button 
-                    label="Previous 20" 
-                    variant="neutral" 
-                    class="prev" 
-                    onclick={handlePrev}>
+                <lightning-button label="Previous 20" variant="neutral" class="prev" onclick={handlePrev}>
                 </lightning-button>
             </div>
-    
+
             <div class="slds-col slds-size_1-of-3 slds-text-align_center">
                 <p class="slds-text-body_regular">Page {currentPage} of {pages} | {images} total images</p>
             </div>
-    
+
             <div class="slds-col slds-size_1-of-3 slds-text-align_right">
-                <lightning-button 
-                    label="Next 20" 
-                    variant="neutral" 
-                    class="next" 
-                    onclick={handleNext}>
+                <lightning-button label="Next 20" variant="neutral" class="next" onclick={handleNext}>
                 </lightning-button>
             </div>
         </nav>
-    
+
 
         <div class="slds-grid slds-wrap slds-gutters">
             <template for:each={selectedImages} for:item="image">
-                <div key={image.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5"
+                <div key={image.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-large-size_1-of-5 "
                     onclick={handleImageClick}>
-                    <img src={image.img_src} alt="Mars Rover Photo" onclick={handleImageClick}/>
+                    <img src={image.img_src} alt="Mars Rover Photo" onclick={handleImageClick}
+                        class="slds-var-m-around_xx-small" />
                 </div>
             </template>
         </div>
-        <c-photo-modal if:true={isModalOpen} image-url={selectedImageUrl} camera-name={selectedCameraName} onclose={closeModal}></c-photo-modal>
+        <c-photo-modal if:true={isModalOpen} image-url={selectedImageUrl} camera-name={selectedCameraName}
+            onclose={closeModal}></c-photo-modal>
 
     </template>
-    <template if:false={photos}>
-        <div class="slds-p-around_medium">
+    <template lwc:elseif={doesNotHavePhotos}>
+        <div class="slds-p-around_medium slds-text-align_center" style="height:6rem;position:relative;margin-top:30%">
             <p>No photos found for this date and camera.</p>
         </div>
     </template>

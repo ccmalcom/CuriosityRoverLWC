@@ -11,7 +11,11 @@ export default class RoverDisplay extends LightningElement {
     currentPage = 1;
 
     get hasPhotos() {
-        return this.photos && this.photos.length > 0;
+        return this.photos && this.photos.length > 0 && this.photos !== 'none';
+    }
+
+    get doesNotHavePhotos() {
+        return this.photos === 'none';
     }
 
     get selectedImages() {
