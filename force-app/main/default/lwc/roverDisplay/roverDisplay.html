@@ -1,11 +1,13 @@
 <template>
-    
+
 
     <template lwc:if={hasPhotos}>
         <nav class="slds-m-around_medium slds-grid slds-grid_align-spread slds-wrap">
             <div class="slds-col slds-size_1-of-3">
-                <lightning-button label="Previous 20" variant="neutral" class="prev" onclick={handlePrev}>
-                </lightning-button>
+                <template lwc:if={hasPrevious}>
+                    <lightning-button label="Previous 20" variant="neutral" class="prev" onclick={handlePrev}>
+                    </lightning-button>
+                </template>
             </div>
 
             <div class="slds-col slds-size_1-of-3 slds-text-align_center">
@@ -13,8 +15,10 @@
             </div>
 
             <div class="slds-col slds-size_1-of-3 slds-text-align_right">
-                <lightning-button label="Next 20" variant="neutral" class="next" onclick={handleNext}>
-                </lightning-button>
+                <template lwc:if={hasNext}>
+                    <lightning-button label="Next 20" variant="neutral" class="next" onclick={handleNext}>
+                    </lightning-button>
+                </template>
             </div>
         </nav>
 
