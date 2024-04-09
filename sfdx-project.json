@@ -7,7 +7,7 @@
   ],
   "name": "NasaRoverProject",
   "namespace": "",
-  "sfdcLoginUrl": "https://gmailcomtestlwcorg-dev-ed.develop.my.salesforce.com",
+  "sfdcLoginUrl": "https://nasaroverimages-lwc-dev-ed.develop.my.salesforce.com",
   "sourceApiVersion": "60.0"
 
 }
