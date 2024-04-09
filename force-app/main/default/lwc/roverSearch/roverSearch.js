@@ -17,9 +17,7 @@ export default class RoverSearch extends LightningElement {
             { label: 'CHEMCAM (Chemistry and Camera Complex)', value: 'chemcam' },
             { label: 'MAHLI (Mars Hand Lens Imager)', value: 'mahli' },
             { label: 'MARDI (Mars Descent Imager)', value: 'mardi' },
-            { label: 'NAVCAM (Navigation Camera)', value: 'navcam' },
-            { label: 'PANCAM (Panoramic Camera)', value: 'pancam' },
-            { label: 'MINITES (Miniature Thermal Emission Spectrometer (Mini-TES))', value: 'minites' }
+            { label: 'NAVCAM (Navigation Camera)', value: 'navcam' }
         ];
     }
 
