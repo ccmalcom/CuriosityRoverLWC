@@ -44,14 +44,19 @@ export default class RoverSearch extends LightningElement {
 
     handleSubmit(event) {
         event.preventDefault();
-        const searchEvent = new CustomEvent('search', {
-            detail: {
-                camera: this.selectedCamera,
-                earthDate: this.inputDate
-            }
-        });
-        // Dispatch the event to the parent component
-        this.dispatchEvent(searchEvent);
+        if(this.inputDate !== undefined && this.inputDate !== '' && this.inputDate <= this.maxDate){
 
+            const searchEvent = new CustomEvent('search', {
+                detail: {
+                    camera: this.selectedCamera,
+                    earthDate: this.inputDate
+                }
+            });
+            // Dispatch the event to the parent component
+            this.dispatchEvent(searchEvent);
+        }
+        else{
+            alert('Please enter a valid date');
+        }
     }
 }
