@@ -1,16 +1,30 @@
 <template>
     <template if:true={hasPhotos}>
-        <div class="slds-p-around_medium" id="info">
-            <p>Total Images: {images}</p>
-            <p>Click Photo to see Full Size</p>
-        </div>
 
-        <nav class="slds-m-around_medium pageNav">
-            <lightning-button label="Previous 25" variant="neutral" class="prev"
-                onclick={handlePrev}></lightning-button>
-            <p>Page {currentPage} of {pages}</p>
-            <lightning-button label="Next 25" variant="neutral" class="next" onclick={handleNext}></lightning-button>
+        <nav class="slds-m-around_medium slds-grid slds-grid_align-spread slds-wrap">
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-button 
+                    label="Previous 20" 
+                    variant="neutral" 
+                    class="prev" 
+                    onclick={handlePrev}>
+                </lightning-button>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-3 slds-text-align_center">
+                <p class="slds-text-body_regular">Page {currentPage} of {pages} | {images} total images</p>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+                <lightning-button 
+                    label="Next 20" 
+                    variant="neutral" 
+                    class="next" 
+                    onclick={handleNext}>
+                </lightning-button>
+            </div>
         </nav>
+    
 
         <div class="slds-grid slds-wrap slds-gutters">
             <template for:each={selectedImages} for:item="image">

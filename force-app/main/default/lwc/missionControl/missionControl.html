@@ -1,4 +1,14 @@
 <template>
-    <c-rover-search onsearch={handleSearch}></c-rover-search>
-    <c-rover-display photos={roverPhotos} images={totalImages} pages={totalPages}></c-rover-display>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item class="slds-grid slds-grid_vertical-align-center" padding="around-medium" size="5">
+            <div class="form-container">
+                <c-rover-search onsearch={handleSearch}></c-rover-search>
+            </div>
+        </lightning-layout-item>
+
+        <lightning-layout-item flexibility="auto" padding="around-small" size="7">
+            <c-rover-display photos={roverPhotos} images={totalImages} pages={totalPages}></c-rover-display>
+        </lightning-layout-item>
+
+    </lightning-layout>
 </template>
