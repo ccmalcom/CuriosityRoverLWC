@@ -18,4 +18,8 @@ export default class PhotoModal extends LightningElement {
     closeModal() {
         this.dispatchEvent(new CustomEvent('close'));
     }
+
+    openImageInNewTab() {
+        window.open(this.imageUrl, '_blank');
+    }
 }

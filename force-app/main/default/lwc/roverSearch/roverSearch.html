@@ -1,40 +1,41 @@
 <template>
-    <lightning-card title="NASA Curiosity Rover Photos" icon-name="custom:custom14">
-        <div class="slds-p-around_medium">
-            <h1>Welcome!</h1>
-            <p>Use this site to see photos from the Mars Curiosity Rover by date as well as by camera. The Curiosity Rover landed on August 6, 2012, so photos before that date will not be available.</p>
+    <lightning-card>
+        <div class="slds-text-align_center">
+            <h3 slot="title" class="slds-text-heading_medium">
+                Mars Rover Photo Search
+            </h3>
         </div>
-        
+        <div class="slds-p-around_medium slds-text-align_center">
+            <div>
+                <img src={sprite} alt="" height="100px" width="100px">
+            </div>
+            <br>
+            <h1>Welcome!</h1>
+            <br>
+            <p>Use this app to see photos from the Mars Curiosity Rover by date as well as by camera. The Curiosity
+                Rover landed on August 6, 2012, so photos before that date will not be available.</p>
+        </div>
+
         <div class="slds-p-around_medium" id="searchSection">
-            <lightning-layout multiple-rows>
-                <lightning-layout-item size="12">
-                    <form id="constraints" onsubmit={handleSubmit}>
-                        <lightning-input 
-                            type="date" 
-                            label="Date of photos" 
-                            name="inputDate"
-                            min="2012-08-06"
-                            max="2024-04-04" 
-                            onchange={handleDateChange}
-                            required>
+            <form id="constraints" onsubmit={handleSubmit}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <lightning-input type="date" label="Date of photos" name="inputDate" min="2012-08-06"
+                        max={maxDate} onchange={handleDateChange} required>
                         </lightning-input>
-                        <lightning-combobox
-                            name="cameraSelect"
-                            label="Which Camera?"
-                            value={selectedCamera}
-                            placeholder="- Select -"
-                            options={cameraOptions}
-                            onchange={handleCameraChange}>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-combobox name="cameraSelect" label="Which Camera?" value={selectedCamera}
+                            placeholder="- Select -" options={cameraOptions} onchange={handleCameraChange}>
                         </lightning-combobox>
-                        <lightning-button
-                            variant="brand"
-                            type="submit"
-                            name="search"
-                            label="Search">
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-grid slds-grid_align-end slds-grid_vertical-align-end">
+                        <lightning-button variant="brand" type="submit" name="search" label="Search"
+                            class="slds-m-top_medium">
                         </lightning-button>
-                    </form>
-                </lightning-layout-item>
-            </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </form>
         </div>
     </lightning-card>
 </template>
