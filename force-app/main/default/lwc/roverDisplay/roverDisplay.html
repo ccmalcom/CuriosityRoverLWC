@@ -16,11 +16,11 @@
             <template for:each={selectedImages} for:item="image">
                 <div key={image.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5"
                     onclick={handleImageClick}>
-                    <img src={image.img_src} alt="Mars Rover Photo" onclick={handleImageClick} />
+                    <img src={image.img_src} alt="Mars Rover Photo" onclick={handleImageClick}/>
                 </div>
             </template>
         </div>
-        <c-photo-modal if:true={isModalOpen} image-url={selectedImageUrl} onclose={closeModal}></c-photo-modal>
+        <c-photo-modal if:true={isModalOpen} image-url={selectedImageUrl} camera-name={selectedCameraName} onclose={closeModal}></c-photo-modal>
 
     </template>
     <template if:false={photos}>

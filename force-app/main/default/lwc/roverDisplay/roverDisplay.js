@@ -6,6 +6,7 @@ export default class RoverDisplay extends LightningElement {
     @api pages;
     @track isModalOpen = false;
     @track selectedImageUrl;
+    @track selectedCameraName;
 
     currentPage = 1;
 
@@ -32,7 +33,8 @@ export default class RoverDisplay extends LightningElement {
     }
 
     handleImageClick(event) {
-        this.selectedImageUrl = event.target.src;  // Assuming the image src is the URL
+        this.selectedImageUrl = event.target.src; 
+        this.selectedCameraName = this.photos.find(photo => photo.img_src === this.selectedImageUrl).camera.full_name;
         this.isModalOpen = true;
     }
     closeModal() {
