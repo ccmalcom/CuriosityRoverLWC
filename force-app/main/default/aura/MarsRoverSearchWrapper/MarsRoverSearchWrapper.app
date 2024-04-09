@@ -1,4 +1,4 @@
-<aura:application access="global" extends="ltng:outApp">
-    <aura:depenency resource="c:missionControl"/>
+<aura:application access="GLOBAL" extends="ltng:outApp" implements="ltng:allowGuestAccess">
+    <aura:dependency resource="c:missionControl"/>
 
 </aura:application>	
